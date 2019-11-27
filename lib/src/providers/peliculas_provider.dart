@@ -41,8 +41,8 @@ class PeliculasProvider{
 
   //Obtenemos las peliculas, transformamos la respuesta en peliculas
   final peliculas = new Peliculas.fromJsonList(decodedData['results']);
-  //print(decodedData);
-  print(peliculas.items[0].title);
+  print(decodedData);
+  //print(peliculas.items[0].title);
   return peliculas.items;
   }
 
@@ -91,7 +91,7 @@ class PeliculasProvider{
 
     final resp = await http.get(url);
     final decodedData=json.decode(resp.body);
-
+    print(decodedData);
     final cast=new Cast.fromJsonList(decodedData['cast']);
 
     return cast.actores; // regresa los actores

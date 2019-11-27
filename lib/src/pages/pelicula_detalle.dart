@@ -67,7 +67,7 @@ class PeliculaDetalle extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: Image(
-                image: NetworkImage(pelicula.getPosterImg()),
+                image: NetworkImage(pelicula.getPosterImg().toString()),
                 height: 150.0,
 
               ),
