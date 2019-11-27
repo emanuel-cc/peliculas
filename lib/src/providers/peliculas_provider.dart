@@ -96,4 +96,17 @@ class PeliculasProvider{
 
     return cast.actores; // regresa los actores
   }
+
+  Future<List<Pelicula>> buscarPelicula(String query) async{
+
+   // Generar url
+   final url = Uri.https(_url, '3/search/movie',{
+     'api_key'  : _apikey,
+     'language' : _language,
+     'query'    : query
+   });
+  
+  // Llamamos al método que nos permite procesar la informacion de un json
+  return await _procesarRespuesta(url);
+  }
 }

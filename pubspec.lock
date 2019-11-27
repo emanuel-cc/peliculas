@@ -7,7 +7,11 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.3.0"
+=======
+    version: "2.2.0"
+>>>>>>> c7aa6b8a90e5f3ce879d20c70210bb830b3d705c
   boolean_selector:
     dependency: transitive
     description:
@@ -101,14 +105,22 @@ packages:
       name: pedantic
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.8.0+1"
+=======
+    version: "1.7.0"
+>>>>>>> c7aa6b8a90e5f3ce879d20c70210bb830b3d705c
   quiver:
     dependency: transitive
     description:
       name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.0.5"
+=======
+    version: "2.0.3"
+>>>>>>> c7aa6b8a90e5f3ce879d20c70210bb830b3d705c
   sky_engine:
     dependency: transitive
     description: flutter
