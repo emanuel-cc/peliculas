@@ -26,12 +26,14 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            _swiperTarjetas(),
-            _footer(context)
-            ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              _swiperTarjetas(),
+              _footer(context)
+              ],
+          ),
         ),
       ),
     );
@@ -65,33 +67,35 @@ class HomePage extends StatelessWidget {
   Widget _footer(BuildContext context){
     return Container(
       width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(left: 20.0),
-            child: Text('Populares',style: Theme.of(context).textTheme.subhead,)
+      child: SingleChildScrollView(
+              child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(left: 20.0),
+              child: Text('Populares',style: Theme.of(context).textTheme.subhead,)
+              ),
+            SizedBox(height: 5.0,),
+            StreamBuilder(
+              stream: peliculasProvider.popularesStream,
+              //initialData: InitialData,
+              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                snapshot.data?.forEach((p)=>print(p.title));
+                if(snapshot.hasData){
+                  return MovieHorizontal(
+                    peliculas: snapshot.data,
+                    siguientePagina: peliculasProvider.getPopulares
+                    );
+                }else{
+                  return Center(
+                    child: CircularProgressIndicator()
+                    );
+                }
+                
+              },
             ),
-          SizedBox(height: 5.0,),
-          StreamBuilder(
-            stream: peliculasProvider.popularesStream,
-            //initialData: InitialData,
-            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-              snapshot.data?.forEach((p)=>print(p.title));
-              if(snapshot.hasData){
-                return MovieHorizontal(
-                  peliculas: snapshot.data,
-                  siguientePagina: peliculasProvider.getPopulares
-                  );
-              }else{
-                return Center(
-                  child: CircularProgressIndicator()
-                  );
-              }
-              
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
